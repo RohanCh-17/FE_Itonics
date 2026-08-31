@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { StarshipGridComponent } from './features/starship-grid/starship-grid.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [StarshipGridComponent],
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-  title = 'FE-Assessment';
-}
+export class AppComponent {}

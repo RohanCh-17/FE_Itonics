@@ -1,0 +1,86 @@
+<div class="p-4">
+  <h2 class="text-xl font-bold mb-4">Starships</h2>
+  <div *ngIf="isInitialLoad" class="flex flex-col items-center justify-center py-20 gap-3">
+  <p-progressSpinner styleClass="w-12 h-12" strokeWidth="4" />
+  <p class="text-gray-500">Loading starships...</p>
+</div>
+<div *ngIf="!isInitialLoad">
+<p-fluid>
+<div class="flex items-center gap-3 mb-4">
+  <input
+    type="text"
+    placeholder="Search by name..."
+    [(ngModel)]="searchTerm"
+    class="border rounded px-3 py-2 mb-4 w-full max-w-sm"
+  />
+  <div class="p-4">
+    <span> {{totalCount}} elements</span>
+  </div></div>
+</p-fluid>
+  <div
+    class="overflow-y-auto border rounded"
+    style="height: 500px;"
+    (scroll)="onScroll($event)"
+  >
+    <p-table
+      [value]="filteredStarships"
+      [tableStyle]="{ 'min-width': '50rem', 'table-layout': 'fixed' }"
+      [resizableColumns]="true"
+      columnResizeMode="expand"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th pResizableColumn >Name</th>
+          <th pResizableColumn >Model</th>
+          <th pResizableColumn >Manufacturer</th>
+          <th pResizableColumn >Crew</th>
+          <th pResizableColumn >Passengers</th>
+          <th pResizableColumn >Hyperdrive Rating</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-ship>
+        <tr>
+          <td [pEditableColumn]="ship" pEditableColumnField="name">
+              <p-cellEditor>
+         <ng-template pTemplate="input">
+         <input type="text" [(ngModel)]="ship.name" class="border rounded px-2 py-1 w-full" />
+         </ng-template>
+         <ng-template pTemplate="output">
+           {{ ship.name }}
+         </ng-template>
+       </p-cellEditor>
+          </td>
+          <td>{{ ship.model }}</td>
+          <td>{{ ship.manufacturer }}</td>
+          <td>{{ ship.crew }}</td>
+          <td>{{ ship.passengers }}</td>
+          <td>
+            <p-rating [(ngModel)]="ship.hyperdrive_rating" readonly="true"/>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5" class="text-center p-4 text-gray-500"></td>
+            <td colspan="6" class="text-center p-4 text-gray-500">
+            No starships match your search.
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+       <div *ngIf="hasError" class="text-center p-4">
+     <p class="text-red-600 mb-2">{{ errorMessage }}</p>
+     <button
+       (click)="retry()"
+       class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+     >
+       Retry
+     </button>
+   </div>
+</div>
+    <div *ngIf="loading" class="text-center p-3 text-gray-500">Loading more...</div>
+    <div *ngIf="!hasMorePages && !loading" class="text-center p-3 text-gray-400">
+      No more starships to load. DEAD-END
+    </div>
+    </div>
+  </div>

@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.p-datatable-column-resizer {
+  background-color: white ;
+  width: 3px ;
+  opacity: 1 ;
+}
+
+th:hover .p-datatable-column-resizer {
+  background-color: black ;
+  width: 3px;
+}
