@@ -45,5 +45,6 @@ karma + jasmine — unit testing
 -- Search is Client-side ( doesnot provide search parameter)
 
 ## Demo video
-watch demo video @ (./docs/FE_Demo.mp4)
+-watch demo video @ (./docs/FE_Demo.mp4)
+-  click view raw (video downloads)
 
