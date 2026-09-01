@@ -44,3 +44,6 @@ karma + jasmine — unit testing
 -- SWAPI is read-only,  changes are not presisted
 -- Search is Client-side ( doesnot provide search parameter)
 
+## Demo video
+watch demo video @ (./docs/FE_Demo.mp4)
+
