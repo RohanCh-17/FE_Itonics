@@ -1,27 +1,46 @@
-# FEAssessment
+# FEAssessment (Getting Started )
+## Tech Stack
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Angular (standalone components, esbuild-based builder)
+Prime ng (Aura theme) — data table, cell editing, column resizing, progress spinner, rating
+Tailwind CSS v3 — layout and spacing utilities
+rxJS— handling HTTP calls in the SWAPI service
+karma + jasmine — unit testing
 
-## Development server
+## Getting Started
+-- npm install
+-- ng serve
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+-- Open http://localhost:4200 
+-- Run Tests
+-- ng test
 
-## Code scaffolding
+## Data Source
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[SWAPI](https://swapi.dev) `starships` endpoint 
+— real paginated data (10/page)
+- good fit for testing pagination and infinite scroll.
+- read only data source
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+-- Infinite Scroll with page caching
+-- CLient-side name search
+-- Empty Search State
+-- Editable Name
+-- Column Resizing 
+-- Loading Indicators 
+-- Responsive data grid
+-- Error-Handling th page level retry
 
-## Running unit tests
+## Tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. `swapi.service.spec.ts` — page fetch + cache hit behavior
+2. `starship-grid.component.spec.ts` — component creation + search filtering
 
-## Running end-to-end tests
+## Notes
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+-- Cell edits are stored in memory only
+-- SWAPI is read-only,  changes are not presisted
+-- Search is Client-side ( doesnot provide search parameter)
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
